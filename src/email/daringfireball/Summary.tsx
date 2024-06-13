@@ -5,7 +5,7 @@ import { Link } from '@react-email/link'
 
 interface Props {
   content: string
-  href: string
+  href: string | undefined
 }
 
 export default ({ content, href }: Props) => {
@@ -30,7 +30,7 @@ export default ({ content, href }: Props) => {
             const paragraphs = element.querySelectorAll('> p')
             return (
               <Fragment key="blockquote">
-                <Text style={blockquote}>{paragraphs[0].text ?? ''}</Text>
+                <Text style={blockquote}>{paragraphs.at(0)?.text ?? ''}</Text>
                 {blockquoteHasMore && (
                   <Text style={blockquote}>
                     <Link style={link} href={href}>
